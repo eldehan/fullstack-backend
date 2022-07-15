@@ -7,10 +7,10 @@ morgan.token('postdata', (request, response) => {
   return JSON.stringify(request.body)
 })
 
-app.use(express.static('build'))
-app.use(cors())
 app.use(express.json())
 app.use(morgan(':method :url :response-time :postdata'))
+app.use(cors())
+app.use(express.static('build'))
 
 app.get('/info', (request, response) => {
   response.send(`<p>Phonebook has info for ${persons.length} people</p>
